@@ -1,0 +1,23 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./database.sqlite"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+model Player {
+  playerid    Int     @id
+  firstName   String
+  lastName    String
+  position    String?
+  height      String?
+  weight      Int?
+  birthday    String?
+  country     String?
+  school      String?
+  draftYear   Int?
+  draftRound  Int?
+  draftNumber Int?
+
+}

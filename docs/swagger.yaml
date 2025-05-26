@@ -1,0 +1,137 @@
+openapi: 3.0.0
+info:
+  title: NBA Players API
+  version: 1.0.0
+  description: API for accessing NBA player information and images
+servers:
+  - url: http://localhost:5000
+    description: Local development server
+paths:
+  /api/players:
+    get:
+      summary: Retrieve a paginated list of players
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+            enum:
+              [
+                firstName,
+                lastName,
+                draftYear,
+                playerid,
+                position,
+                country,
+                school,
+              ]
+            default: lastName
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+            enum: [asc, desc]
+            default: asc
+      responses:
+        "200":
+          description: A list of players
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Player"
+                  meta:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                      page:
+                        type: integer
+                      limit:
+                        type: integer
+  /api/players/{id}:
+    get:
+      summary: Fetch a specific player by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Player details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Player"
+        "404":
+          description: Player not found
+  /api/players/{id}/image:
+    get:
+      summary: Get player image URL
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Image URL
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  imageUrl:
+                    type: string
+        "404":
+          description: Image not found
+components:
+  schemas:
+    Player:
+      type: object
+      properties:
+        playerid:
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        position:
+          type: string
+        height:
+          type: string
+        weight:
+          type: integer
+        birthday:
+          type: string
+        country:
+          type: string
+        school:
+          type: string
+        draftYear:
+          type: integer
+        draftRound:
+          type: integer
+        draftNumber:
+          type: integer

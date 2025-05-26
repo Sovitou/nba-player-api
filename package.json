@@ -1,0 +1,29 @@
+{
+  "name": "nba-player-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "load-csv": "node scripts/load-csv.js"
+  },
+  "author": "Khem Sovitou",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "^6.8.2",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-joi-validation": "^6.0.0",
+    "joi": "^17.13.3",
+    "prisma": "^6.8.2",
+    "sqlite3": "^5.1.7",
+    "swagger-ui-express": "^5.0.1",
+    "winston": "^3.17.0",
+    "yaml": "^2.8.0"
+  },
+  "devDependencies": {
+    "csv-parse": "^5.6.0",
+    "nodemon": "^3.1.10"
+  }
+}
