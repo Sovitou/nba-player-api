@@ -4,7 +4,7 @@ info:
   version: 1.0.0
   description: API for accessing NBA player information and images
 servers:
-  - url: http://localhost:5000
+  - url: http://localhost:4000
     description: Local development server
 paths:
   /api/players:
