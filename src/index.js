@@ -27,6 +27,6 @@ app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 app.use("/api/players", playerRoutes);
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   logger.info(`Server running on port ${PORT}`);
 });
