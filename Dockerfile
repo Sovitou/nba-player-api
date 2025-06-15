@@ -19,9 +19,6 @@ COPY . .
 # Generate Prisma client
 RUN npx prisma generate
 
-# If using SQLite and you have pre-filled DB, copy it
-# Otherwise, optionally run migrations instead of copy
-# COPY prisma/database.sqlite ./prisma/database.sqlite
 
 # Expose application port
 EXPOSE 5000
