@@ -8,7 +8,7 @@
     "start": "node src/index.js",
     "load-csv": "node scripts/load-csv.js",
     "prisma:generate": "prisma generate",
-    "deploy": "bash ./deployment.sh",
+    "deploy": "powershell ./deployment.sh",
     "start:blue-green": "docker-compose -f compose.yaml up -d"
   },
   "author": "Khem Sovitou",
